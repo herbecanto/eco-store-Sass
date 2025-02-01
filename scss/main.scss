@@ -1,0 +1,461 @@
+$primary-color: #ffefe7;
+$secondary-color: #ffdac6;
+$tertiary-color: #babd8d;
+$primary-text-color: #7c6a0a;
+$quaternary-color: #fa9500;
+$font-stack: "IBM Plex Sans", sans-serif;
+$paragraph-size: 1.6rem;
+
+@mixin flexCenter($direction, $content, $align) {
+   display: flex;
+   flex-direction: $direction;
+   justify-content: $content;
+   align-items: $align;
+}
+@mixin buttonStyle {
+   button {
+      background: none;
+      border-style: none;
+   }
+}
+@mixin titles($fWeight) {
+   padding-bottom: 60px;
+   h2 {
+      font-weight: $fWeight;
+      padding-bottom: 60px;
+   }
+}
+
+* {
+   margin: 0px;
+   padding: 0px;
+   box-sizing: border-box;
+}
+html {
+   font-family: $font-stack;
+   font-size: 62.5%;
+}
+body {
+   background-color: $primary-color;
+}
+
+nav {
+   width: auto;
+   @include flexCenter(row, space-between, center);
+   padding: 20px;
+
+   p {
+      font-size: 2rem;
+      padding-left: 10px;
+      color: $primary-text-color;
+   }
+   .icons {
+      display: flex;
+      gap: 15px;
+      .profile,
+      .wishlist,
+      .cart {
+         display: none;
+      }
+      @include buttonStyle();
+   }
+}
+
+article {
+   color: $primary-text-color;
+   width: auto;
+   padding: 0 30px;
+   @include flexCenter(column-reverse, space-between, center);
+   /* display: flex;
+   justify-content: space-between;
+   flex-direction: column-reverse; //movil */
+   margin-top: 30px;
+
+   .impact-section {
+      display: flex;
+      flex-direction: column;
+      padding: 20px 0;
+      width: 100%; //movil
+   }
+   h1 {
+      font-size: 3.2rem; //movil
+      padding-left: 10px;
+   }
+
+   p {
+      font-size: 1.6rem;
+      margin: 30px 0;
+      padding: 0 10px;
+   }
+
+   @include buttonStyle();
+   button {
+      background-color: $quaternary-color;
+      height: 70px;
+      border-radius: 35px;
+      width: 200px;
+      align-self: center; //movil
+      color: #fff;
+      font-weight: 700;
+      font-size: 1.6rem;
+      margin-top: 10px;
+      margin-bottom: 20px;
+      transition: transform 0.2s;
+      &:hover {
+         transform: scale(1.1);
+      }
+   }
+
+   img {
+      width: 95%;
+      max-width: 500px; //movil
+      max-height: 500px; //movil
+      border-radius: 19px;
+      display: flex;
+      justify-self: center;
+      object-fit: cover;
+   }
+}
+
+section {
+   width: auto;
+   height: auto;
+   padding: 20px;
+
+   h2 {
+      color: $primary-text-color;
+      font-size: 2.5rem;
+   }
+
+   .healthcare {
+      @include titles(500);
+      .card-section {
+         width: 100%;
+         height: auto;
+
+         display: grid;
+         grid-auto-flow: column;
+         overflow-x: scroll;
+         justify-content: initial;
+         gap: 10px;
+         overscroll-behavior-x: contain;
+         scroll-snap-type: x proximity;
+
+         .product-card {
+            scroll-snap-align: center;
+            color: $primary-text-color;
+
+            width: 250px;
+            height: 400px;
+            background-color: $secondary-color;
+            padding: 10px;
+            border-radius: 8px;
+            display: grid;
+            grid-template-rows: 10% 65% 25%;
+
+            .icon {
+               height: 100%;
+               display: flex;
+               justify-content: flex-end;
+               svg {
+                  height: 28px;
+                  width: 28px;
+                  color: $primary-text-color;
+               }
+            }
+
+            .product-image {
+               width: 90%;
+               height: 100%;
+               display: flex;
+               justify-self: center;
+               padding: 0 10px;
+               img {
+                  width: 100%;
+                  height: 100%;
+                  border-radius: 6px;
+                  object-fit: cover;
+               }
+            }
+
+            .card-text {
+               @include flexCenter(column, center, flex-start);
+               padding: 5px 10px;
+               h3 {
+                  font-size: 1.6rem;
+                  margin-bottom: 5px;
+               }
+               p {
+                  font-size: 1.2rem;
+               }
+            }
+         }
+      }
+      .card-section::-webkit-scrollbar {
+         height: 14px;
+      }
+      .card-section::-webkit-scrollbar-thumb {
+         background-color: #fa9500;
+         border-radius: 8px;
+      }
+   }
+
+   .furniture {
+      @extend .healthcare;
+      .card-section {
+         .product-card {
+            background-color: $tertiary-color;
+            color: white;
+
+            .icon {
+               svg {
+                  color: white;
+               }
+            }
+         }
+      }
+      .card-section::-webkit-scrollbar-thumb {
+         background-color: $primary-text-color;
+      }
+   }
+}
+
+.about-us {
+   @include titles(bold);
+
+   .mission-section {
+      @include flexCenter(column, center, center);
+      gap: 60px;
+
+      .earth {
+         @include flexCenter(column, center, center);
+         padding: 10px 30px;
+         width: 40vw;
+
+         min-width: 300px;
+         color: rgba(232, 100, 36, 1);
+         img {
+            object-fit: contain;
+         }
+
+         p {
+            max-width: 300px;
+
+            margin-top: 30px;
+            text-align: center;
+            font-size: $paragraph-size;
+            font-weight: 500;
+         }
+      }
+
+      .innovation {
+         @extend .earth;
+      }
+   }
+}
+
+.gallery {
+   @include titles(bold);
+   .gallery-images {
+      @include flexCenter(row, center, center);
+      padding: 0 60px;
+      flex-wrap: wrap;
+      gap: 50px;
+
+      block-size: auto;
+      margin: 0 10px;
+
+      img {
+         width: 60vw;
+         min-width: 250px;
+         height: 45vh;
+         object-fit: cover;
+         /* object-position: 35%; */
+         border-radius: 16px;
+
+         transition: transform 0.3s;
+         &:hover {
+            transform: scale(1.1);
+         }
+      }
+   }
+}
+
+.location {
+   @include titles(bold);
+
+   color: rgba(232, 100, 36, 1);
+   width: 100%;
+
+   .map {
+      @include flexCenter(row, center, center);
+
+      padding-bottom: 30px;
+      min-width: 250px;
+      height: 40vh;
+      iframe {
+         width: 100%;
+         height: 100%;
+      }
+   }
+   h3 {
+      left: 0;
+      font-size: $paragraph-size;
+      justify-self: center;
+   }
+   p {
+      font-size: 1.4rem;
+      justify-self: center;
+   }
+}
+
+footer {
+   padding-top: 30px;
+   background-color: $quaternary-color;
+   width: 100%;
+   height: auto;
+   color: white;
+   padding-left: 20px;
+   h3 {
+      font-size: 2rem;
+      padding-bottom: 20px;
+   }
+   p {
+      font-size: $paragraph-size;
+      padding-bottom: 10px;
+   }
+   .social-media {
+      @include flexCenter(row, center, center);
+      gap: 40px;
+      padding: 20px 0;
+   }
+}
+
+@media (min-width: 768px) {
+   nav .icons {
+      .profile,
+      .wishlist,
+      .cart {
+         display: block;
+      }
+      .nav-menu {
+         display: none;
+      }
+   }
+
+   article {
+      display: grid;
+      grid-template-columns: 50% 50%;
+
+      .impact-section {
+         row-gap: 30px;
+      }
+      h1 {
+         font-size: 4.5rem;
+         padding-left: 20px;
+      }
+
+      p {
+         font-size: 2rem;
+         padding: 0 20px;
+      }
+
+      button {
+         align-self: flex-start;
+         margin-left: 20px;
+      }
+      img {
+         justify-self: end;
+      }
+   }
+   section {
+      h2 {
+         font-size: 3rem;
+      }
+   }
+   .product-section {
+      .healthcare {
+         .card-section {
+            @include flexCenter(wrap, center, center);
+            flex-wrap: wrap;
+            width: auto;
+            column-gap: 80px;
+            row-gap: 80px;
+            .product-card {
+               width: 300px;
+               height: 500px;
+               .card-text {
+                  h3 {
+                     font-size: 2.2rem;
+                  }
+                  p {
+                     font-size: 1.6rem;
+                  }
+               }
+            }
+         }
+      }
+      .furniture {
+         .card-section {
+            @include flexCenter(wrap, center, center);
+            flex-wrap: wrap;
+            width: auto;
+            column-gap: 80px;
+            row-gap: 80px;
+            .product-card {
+               width: 300px;
+               height: 500px;
+               .card-text {
+                  h3 {
+                     font-size: 2.2rem;
+                  }
+                  p {
+                     font-size: 1.6rem;
+                  }
+               }
+            }
+         }
+      }
+   }
+
+   .about-us {
+      .mission-section {
+         @include flexCenter(row, space-evenly, center);
+         gap: 20px;
+
+         .earth {
+            @include flexCenter(row, center, center);
+            gap: 20px;
+            img {
+               min-width: 150px;
+            }
+            p {
+               font-size: 2rem;
+            }
+            flex: 1;
+         }
+         .innovation {
+            flex: 1;
+         }
+      }
+   }
+
+   .gallery {
+      .gallery-images {
+         justify-content: space-evenly;
+         img {
+            width: 25vw;
+            min-width: 300px;
+         }
+      }
+   }
+
+   .location {
+      .map {
+         height: 50vh;
+         iframe {
+            width: 60%;
+         }
+      }
+   }
+}
