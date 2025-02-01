@@ -1,4 +1,4 @@
-#Eco Store con Sass - PLATZI
+<h1>Eco Store con Sass - PLATZI</h1>
 
 Esto es un proyecto que hice en un curso de Sass, en el, probé las características, 
 como es el uso de variables, anidación, mixins y herencias
@@ -16,6 +16,10 @@ Si leíste esto, gracias por tu atención! :D
 
 Atte: Herbé Canto
 
-#Capturas
+<h2>Capturas</h2>
+
+<h3>Mobile</h3>
 ![](./mobile.png)
+
+<h3>Desktop</h3>
 ![](./desktop.png)
