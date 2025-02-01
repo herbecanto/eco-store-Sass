@@ -19,7 +19,9 @@ Atte: Herbé Canto
 <h2>Capturas</h2>
 
 <h3>Mobile</h3>
+
 ![](./mobile.png)
 
 <h3>Desktop</h3>
+
 ![](./desktop.png)
